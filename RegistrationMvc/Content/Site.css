@@ -1,0 +1,47 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  
+}
+
+.task-form,.project-form,.signupform {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    padding: 15px;
+    box-shadow: 0px 0px 3px #999;
+}
+.table td a:nth-child(1) {
+    color: greenyellow;
+}
+.table td a:nth-child(2) {
+    color: deepskyblue;
+}
+.table td a:nth-child(3) {
+    color: red;
+}
+.table{
+    width:90%;
+
+}
+.inputday{
+    width: 40px;
+}
+.icon {
+    width: 10px;
+}
+.float-right {
+margin-right: 108px;
+}

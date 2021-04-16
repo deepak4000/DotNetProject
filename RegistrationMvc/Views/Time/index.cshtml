@@ -1,0 +1,259 @@
+﻿@model IEnumerable<RegistrationMvc.Models.tbl_TimeEntry>
+
+@{
+    ViewBag.Title = "index";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/scripts/TimeControl.js"></script>
+
+    <body>
+        <p>Week Ending Date: <input type="text" id="datepicker" placeholder="Click to Select Week Ending Date."></p>
+
+        <form>
+            <div class="container">
+                <table class="table table-responsive" id="table-row">
+                    <thead class="table-primary text-white">
+                        <tr>
+                            <th>Project</th>
+                            <th>Task</th>
+                            <th>Billable/Non Billable</th>
+                            <th>Mon</th>
+                            <th>Tues</th>
+                            <th>Wed</th>
+                            <th>Thurs</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                            <th>Task Discription</th>
+                            <th>Delete</th>
+                            <th>Total Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!----   ROw-1  ------>
+                        <tr id="row-1">
+                            <td>
+                                @Html.DropDownList("Projectid", (IEnumerable<SelectListItem>)ViewBag.Projectid, "Select Project", new { id = "ddlProject" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("Taskid", (IEnumerable<SelectListItem>)ViewBag.Taskid, "Select Task", new { id = "ddlTask" })
+                            </td>
+                            <td>
+                                <input type="checkbox" id="isSelected1" class="checkbox">
+                            </td>
+                            <td>
+                                <input class="inputday inputday-mon row-1 column-1" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-tues row-1 column-2" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-wed row-1 column-3" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-thurs row-1 column-4" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-fri row-1 column-5" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sat row-1 column-6" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sun row-1 column-7" data-row="1" type="text" />
+                            </td>
+                            <td>
+                                <textarea type="text"></textarea>
+                            </td>
+                            <td>
+                                <a href="#"> <img src="~/Images/deleteicon.jpg" class="icon delete"> </a>
+                            </td>
+                            <td>
+                                <label for="Cal" class="total">0.00</label>
+                            </td>
+                        </tr>
+                        <!----- ROw-2  ------>
+                        <tr id="row-2">
+                            <td>
+                                @Html.DropDownList("Projectid", (IEnumerable<SelectListItem>)ViewBag.Projectid, "Select Project", new { id = "ddlProject" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("Taskid", (IEnumerable<SelectListItem>)ViewBag.Taskid, "Select Task", new { id = "ddlTask" })
+                            </td>
+                            <td>
+                                <input type="checkbox" id="isSelected2" class="checkbox">
+                            </td>
+                            <td>
+                                <input class="inputday inputday-mon row-2 column-1" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-tues row-2 column-2" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-wed row-2 column-3" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-thurs row-2 column-4" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-fri row-2 column-5" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sat row-2 column-6" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sun row-2 column-7" data-row="2" type="text" />
+                            </td>
+                            <td>
+                                <textarea type="text"></textarea>
+                            </td>
+                            <td>
+                                <a href="#"> <img src="~/Images/deleteicon.jpg"  class="icon delete"> </a>
+                            </td>
+                            <td>
+                                <label for="Cal" class="total">0.00</label>
+                            </td>
+                        </tr>
+                        <!----   ROw-3  ------>
+                        <tr id="row-3">
+                            <td>
+                                @Html.DropDownList("Projectid", (IEnumerable<SelectListItem>)ViewBag.Projectid, "Select Project", new { id = "ddlProject" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("Taskid", (IEnumerable<SelectListItem>)ViewBag.Taskid, "Select Task", new { id = "ddlTask" })
+                            </td>
+                            <td>
+                                <input type="checkbox" id="isSelected3" class="checkbox">
+                            </td>
+                            <td>
+                                <input class="inputday inputday-mon row-3 column-1" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-tues row-3 column-2" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-wed row-3 column-3" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-thurs row-3 column-4" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-fri row-3 column-5" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sat row-3 column-6" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sun row-3 column-7" data-row="3" type="text" />
+                            </td>
+                            <td>
+                                <textarea type="text"></textarea>
+                            </td>
+                            <td>
+                                <a href="#"> <img src="~/Images/deleteicon.jpg" class="icon delete"> </a>
+                            </td>
+                            <td>
+                                <label for="Cal" class="total">0.00</label>
+                            </td>
+                        </tr>
+                        <!----   ROw-4  ------>
+                        <tr id="row-4">
+                            <td>
+                                @Html.DropDownList("Projectid", (IEnumerable<SelectListItem>)ViewBag.Projectid, "Select Project", new { id = "ddlProject" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("Taskid", (IEnumerable<SelectListItem>)ViewBag.Taskid, "Select Task", new { id = "ddlTask" })
+                            </td>
+                            <td>
+                                <input type="checkbox" id="isSelected4" class="checkbox">
+                            </td>
+                            <td>
+                                <input class="inputday inputday-mon row-4 column-1" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-tues row-4 column-2" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-wed row-4 column-3" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-thurs row-4 column-4" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-fri row-4 column-5" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sat row-4 column-6" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <input class="inputday inputday-sun row-4 column-7" data-row="4" type="text" />
+                            </td>
+                            <td>
+                                <textarea type="text"></textarea>
+                            </td>
+                            <td>
+                                <a href="#"> <img src="~/Images/deleteicon.jpg" class="icon delete"> </a>
+                            </td>
+                            <td>
+                                <label for="Cal" class="total">0.00</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <!-----Billable---->
+                        <tr>
+                            <td colspan="2"><strong>Billable</strong></td>
+                            <td></td>
+                            <td class="inputday-mon-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-tues-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-wed-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-thurs-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-fri-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-sat-billable-total bilcolumntotal">0.00</td>
+                            <td class="inputday-sun-billable-total bilcolumntotal">0.00</td>
+                            <td class="sumtotalbillable">0.00</td>
+                            <td colspan="1"></td>
+                            <td class="inputday-hours-total">0.00</td>
+
+                        </tr>
+                        <!------Non-Billable---->
+                        <tr>
+                            <td colspan="2"><strong>Non-Billable</strong></td>
+                            <td></td>
+                            <td class="inputday-mon-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-tues-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-wed-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-thurs-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-fri-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-sat-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="inputday-sun-nonbillable-total nonbillablecolumntotal">0.00</td>
+                            <td class="sumtotalnonbillable">0.00</td>
+                            <td colspan="2"></td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </form>
+    </body>
+
+
+<div>
+    <footer style="width:100%" class="container">
+        <div class="float-left">
+            <button class=" btn btn-primary" id="add-row">Add Row</button>
+        </div>
+        <div class="float-right">
+            <button class=" btn btn-secondary">Save Draft</button>
+            <button class=" btn btn-primary">Submit</button>
+            <button class=" btn btn-danger">Cancel</button>
+        </div>
+    </footer>
+</div>

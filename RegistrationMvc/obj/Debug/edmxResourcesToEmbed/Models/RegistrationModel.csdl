@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserLoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="DateCreated" Type="DateTime" Precision="0" />
+    <Property Name="DateModified" Type="DateTime" Precision="0" />
+    <Property Name="DateDeleted" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbl_TimeEntry" Relationship="UserLoginModel.FK_tbl_TimeEntry_tbl_Project" FromRole="tbl_Project" ToRole="tbl_TimeEntry" />
+  </EntityType>
+  <EntityType Name="tbl_task">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="DateCreated" Type="DateTime" Precision="0" />
+    <Property Name="DateModified" Type="DateTime" Precision="0" />
+    <Property Name="DateDeleted" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbl_TimeEntry" Relationship="UserLoginModel.FK_tbl_TimeEntry_tbl_task" FromRole="tbl_task" ToRole="tbl_TimeEntry" />
+  </EntityType>
+  <EntityType Name="tbl_User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Confirm_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="UserLoginEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Project" EntityType="Self.tbl_Project" />
+    <EntitySet Name="tbl_task" EntityType="Self.tbl_task" />
+    <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+    <FunctionImport Name="ProjectDeleteData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProjectGetData" ReturnType="Collection(UserLoginModel.ProjectGetData_Result)" />
+    <FunctionImport Name="ProjectInsertData">
+      <Parameter Name="ProjectName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="DateDeleted" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ProjectUpdateData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="DateDeleted" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="TaskDeleteData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="TaskGetData" ReturnType="Collection(UserLoginModel.TaskGetData_Result)" />
+    <FunctionImport Name="TaskInsertData">
+      <Parameter Name="TaskName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="DateDeleted" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="TaskUpdateData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="TaskName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="DateCreated" Mode="In" Type="DateTime" />
+      <Parameter Name="DateModified" Mode="In" Type="DateTime" />
+      <Parameter Name="DateDeleted" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="tbl_TimeEntry" EntityType="UserLoginModel.tbl_TimeEntry" />
+    <AssociationSet Name="FK_tbl_TimeEntry_tbl_Project" Association="UserLoginModel.FK_tbl_TimeEntry_tbl_Project">
+      <End Role="tbl_Project" EntitySet="tbl_Project" />
+      <End Role="tbl_TimeEntry" EntitySet="tbl_TimeEntry" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_TimeEntry_tbl_task" Association="UserLoginModel.FK_tbl_TimeEntry_tbl_task">
+      <End Role="tbl_task" EntitySet="tbl_task" />
+      <End Role="tbl_TimeEntry" EntitySet="tbl_TimeEntry" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="ProjectGetData_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="ProjectName" Nullable="true" MaxLength="150" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" />
+    <Property Type="DateTime" Name="DateModified" Nullable="true" />
+    <Property Type="DateTime" Name="DateDeleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="TaskGetData_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="TaskName" Nullable="true" MaxLength="150" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="true" />
+    <Property Type="DateTime" Name="DateModified" Nullable="true" />
+    <Property Type="DateTime" Name="DateDeleted" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_TimeEntry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Projectid" Type="Int64" />
+    <Property Name="Taskid" Type="Int64" />
+    <Property Name="Monday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Tuesday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Wednesday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Thursday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Friday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Saturday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Sunday" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Total" Type="Decimal" Precision="25" Scale="2" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="DateCreated" Type="DateTime" Precision="0" />
+    <Property Name="DateModified" Type="DateTime" Precision="0" />
+    <Property Name="DateDeleted" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tbl_Project" Relationship="UserLoginModel.FK_tbl_TimeEntry_tbl_Project" FromRole="tbl_TimeEntry" ToRole="tbl_Project" />
+    <NavigationProperty Name="tbl_task" Relationship="UserLoginModel.FK_tbl_TimeEntry_tbl_task" FromRole="tbl_TimeEntry" ToRole="tbl_task" />
+  </EntityType>
+  <Association Name="FK_tbl_TimeEntry_tbl_Project">
+    <End Type="UserLoginModel.tbl_Project" Role="tbl_Project" Multiplicity="0..1" />
+    <End Type="UserLoginModel.tbl_TimeEntry" Role="tbl_TimeEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_TimeEntry">
+        <PropertyRef Name="Projectid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_TimeEntry_tbl_task">
+    <End Type="UserLoginModel.tbl_task" Role="tbl_task" Multiplicity="0..1" />
+    <End Type="UserLoginModel.tbl_TimeEntry" Role="tbl_TimeEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_task">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_TimeEntry">
+        <PropertyRef Name="Taskid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
